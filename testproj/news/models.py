@@ -12,6 +12,9 @@ class News(models.Model):
     we_are_fucked = models.BooleanField(default=True, verbose_name='Мы в дерьме ?')
     category = models.ForeignKey('Category', on_delete=models.PROTECT, null=True, verbose_name='Категория')
 
+    def my_func(self):
+        return 'helloe from model'
+    
     def __str__(self):
         return self.title
     

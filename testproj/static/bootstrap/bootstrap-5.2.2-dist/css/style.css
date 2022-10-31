@@ -1,0 +1,593 @@
+* {
+  padding: 0;
+  margin: 0;
+}
+:root {
+  --scrollbarBg: rgb(53, 99, 138);
+  --scrollbarThumb: rgba(255, 255, 255, 0.8);
+  --scrollbarBorderRadius: calc(var(--scrollbarWidth) / 2);
+  --bgTitleShadow: rgba(0, 0, 0, 0.4);
+  --bgColor1: #7C7C7C;
+  --onHoverColor: rgb(90, 90, 90);
+}
+* {
+  scrollbar-width: 12px;
+  scrollbar-color: var(--scrollbarThumb) var(--scrollbarBg);
+}
+*::-webkit-scrollbar {
+  width: var(--scrollbarWidth);
+}
+*::-webkit-scrollbar-track {
+  background: var(--scrollbarBg);
+}
+*::-webkit-scrollbar-thumb {
+  background-color: var(--scrollbarThumb);
+  border-radius: var(--scrollbarBorderRadius);
+  border: 3px solid var(--scrollbarBg);
+}
+@font-face {
+  font-family: aleway_f;
+  src: url("/fonts/raleway-regular.woff2") format("woff2");
+}
+html {
+  min-width: 100%;
+  min-height: 100%;
+  overflow: hidden;
+}
+body {
+  align-content: center;
+  align-items: center;
+  text-align: center;
+}
+.content {
+  perspective: 1px;
+  height: 100vh;
+  font-family: raleway_f, sans-serif;
+  scroll-behavior: smooth;
+  overflow-x: hidden;
+  overflow-y: auto;
+}
+.layerGrab {
+  position: relative;
+  height: 100vh;
+  transform-style: preserve-3d;
+}
+.layer {
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+}
+.img1 {
+  transform-origin: center;
+  transform: translateZ(-1px) scale(2);
+  min-height: 100vh;
+  width: 100vw;
+  /* animation: blur 2s 0s infinite alternate; */
+  filter: blur(8px);
+  -webkit-filter: blur(8px);
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-image: url("media/img/1621400896_18-phonoteka_org-p-fon-moskva-siti-19.jpg");
+}
+.intro {
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  background: var(--bgTitleShadow);
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: -webkit-flex;
+  display: flex;
+  -webkit-box-align: center;
+  -webkit-align-items: center;
+  -ms-flex-align: center;
+  align-items: center;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+  -webkit-flex-direction: column;
+  -ms-flex-direction: column;
+  flex-direction: column;
+  -webkit-box-pack: center;
+  -webkit-justify-content: center;
+  -ms-flex-pack: center;
+  justify-content: center;
+  color: white;
+  transform: translateZ(0) scale(1);
+  transition: 1s;
+}
+.intro .title {
+  font-size: calc(30px + (70 - 30) * ((100vw - 320px) / (1200 - 320)));  
+  font-weight: bold;
+}
+.intro .subTitle {
+  font-size: calc(13px + (18 - 13) * ((100vw - 320px) / (1200 - 320)));
+  font-weight: 400;
+  margin-bottom: 0;
+  letter-spacing: 8px;
+  word-spacing: 10px;
+  text-align: center;
+  opacity: .8;
+}
+.logo {
+  top: 8%;
+  left: 5%;
+  width: 200px;
+  background-repeat: no-repeat;
+  background-image: url("media/logo/Logo_medium.png");
+}
+.customShapeDividerBottom svg {
+  position: absolute;
+  bottom: -28px;
+  left: 0;
+  width: calc(100% + 1.3px);
+}
+.customShapeDividerBottom svg path {
+  fill: var(--bgColor1);
+  /* rgb(171, 182, 207); */
+}
+.mainContent {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: -webkit-flex;
+  display: flex;
+  -webkit-box-align: center;
+  -webkit-align-items: center;
+  -ms-flex-align: center;
+  align-items: center;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+  -webkit-flex-direction: row;
+  -ms-flex-direction: row;
+  flex-direction: row;
+  -webkit-box-pack: justify;
+  -webkit-justify-content: center;
+  -ms-flex-pack: justify;
+  justify-content: space-around;
+  align-content: center;
+  text-align: center;
+  background-color: white;
+}
+.divider {
+  position: absolute;
+  top: -.1%;
+  left: 0;
+  width: 100vw;
+  height: 4vh;
+  background-color: var(--bgColor1);
+}
+.customShapeDividerTop {
+  position: absolute;
+  top: 3.8%;
+  left: 0;
+  width: 100%;
+  overflow: hidden;
+  line-height: 0;
+}
+.customShapeDividerTop svg {
+  position: relative;
+  display: block;
+  width: calc(100% + 1.3px);
+  height: 6vh;
+}
+.customShapeDividerTop .shapeFill {
+  fill: var(--bgColor1);
+}
+.arrow {
+  position: absolute;
+  border-radius: 50%;
+  background-color: var(--bgColor1);
+  transform: rotate(-90deg);
+  transition: .35s;
+  z-index: 10;
+}
+.arrow:hover {
+  background-color: var(--onHoverColor);
+  transform: rotate(-90deg) translateX(5px);
+  transition: .35s;
+}
+.arrow a {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: -webkit-flex;
+  display: flex;
+  -webkit-box-align: center;
+  -webkit-align-items: center;
+  -ms-flex-align: center;
+  align-items: center;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+  -webkit-flex-direction: column;
+  -ms-flex-direction: column;
+  flex-direction: column;
+  -webkit-box-pack: center;
+  -webkit-justify-content: center;
+  -ms-flex-pack: center;
+  justify-content: center;
+  width: 100%;
+  height: 100%;
+}
+.arrow span {
+  position: absolute;
+  width: 40px;
+  height: 6px;
+  background-color: black;
+}
+.arrow span::before {
+  content: '';
+  position: absolute;
+  width: 30px;
+  height: 6px;
+  top: 9px;
+  right: 14px;
+  transform: rotate(45deg);
+  background-color: black;
+}
+.arrow span::after {
+  content: '';
+  position: absolute;
+  width: 30px;
+  height: 6px;
+  top: -9px;
+  right: 14px;
+  transform: rotate(-45deg);
+  background-color: black;
+}
+.slider {
+  position: absolute;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: -webkit-flex;
+  display: flex;
+  -webkit-box-align: center;
+  -webkit-align-items: center;
+  -ms-flex-align: center;
+  align-items: center;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+  -webkit-flex-direction: row;
+  -ms-flex-direction: row;
+  flex-direction: row;
+  -webkit-box-pack: justify;
+  -webkit-justify-content: center;
+  -ms-flex-pack: justify;
+  justify-content: space-around;
+  align-content: center;
+  text-align: center;
+  bottom: 25vh;
+  left: 0;
+  height: 50vh;
+  width: 13vw;
+  border-radius: 0 8% 8% 0;
+  transform: translateX(-13vw);
+  transition: .5s;
+  background-color: var(--bgColor1);
+}
+.slider:has(.navBarActivateBtn_active) {
+  transform: translateX(0vw);
+}
+.slider .navBarActivateBtn {
+  position: absolute;
+  right: 10px;
+  top: 6%;
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
+  background-color: var(--bgColor1);
+  transform: translateX(80px);
+  transition: .35s;
+  cursor: pointer;
+}
+.slider .navBarActivateBtn:hover {
+  background-color: var(--onHoverColor);
+  transition: .35s;
+}
+.slider .navBarActivateBtn_active {
+  transform: translateX(0px);
+}
+.slider .navBarActivateBtn span,
+.slider .navBarActivateBtn span::before,
+.slider .navBarActivateBtn span::after {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  margin-top: -2.5px;
+  margin-left: -15px;
+  width: 30px;
+  height: 5px;
+  background-color: black;
+  transition: .25s;
+}
+.slider .navBarActivateBtn span::before,
+.slider .navBarActivateBtn span::after {
+  content: '';
+}
+.slider .navBarActivateBtn span::before {
+  transform: translateY(11px);
+}
+.slider .navBarActivateBtn span::after {
+  transform: translateY(-11px);
+}
+.slider .navBarActivateBtn_active span {
+  height: 0;
+  margin-top: 0px;
+}
+.slider .navBarActivateBtn_active span::before {
+  transform: rotate(45deg);
+  transform-origin: center;
+}
+.slider .navBarActivateBtn_active span::after {
+  transform: rotate(-45deg);
+  transform-origin: center;
+}
+.blockRotateAnim {
+  width: 90px;
+  height: 90px;
+  background-color: aquamarine;
+  border-radius: 4% 4% 4% 4%;
+  transition: 1s;
+  z-index: 0;
+}
+.blockRotateAnim:hover {
+  width: 90px;
+  height: 90px;
+  /* animation: rotation 2s 0s infinite alternate; */
+  border-radius: 50% 50% 50% 50%;
+  transform: rotate(180deg);
+  transition: .8s;
+}
+@keyframes rotation {
+  0% {
+    border: 0 0 0 0;
+  }
+  33% {
+    transform: rotate(135deg);
+  }
+  67% {
+    border-radius: 50% 50% 50% 50%;
+  }
+  100% {
+    border-radius: 0 0 0 0;
+  }
+}
+.blockRotateAnim a {
+  display: flex;
+  justify-content: space-around;
+  align-content: center;
+  align-items: center;
+  text-align: center;
+  width: 100%;
+  height: 100%;
+}
+.navigation,
+.navigation::before,
+.navigation::after {
+  content: '';
+  position: absolute;
+  width: 30px;
+  height: 6px;
+  background-color: black;
+  transition: .4s;
+}
+.navigation::before {
+  top: 12px;
+  right: 0;
+}
+.navigation::after {
+  top: -12px;
+  right: 0;
+}
+.blockRotateAnim:hover .navigation {
+  width: 40px;
+  transition: .4s;
+}
+.blockRotateAnim:hover .navigation::before,
+.blockRotateAnim:hover .navigation::after {
+  transition: .4s;
+  right: 14px;
+}
+.blockRotateAnim:hover .navigation::before {
+  transform: rotate(45deg);
+  top: 9px;
+}
+.blockRotateAnim:hover .navigation::after {
+  transform: rotate(-45deg);
+  top: -9px;
+}
+.blockMoveAnim {
+  display: flex;
+  justify-content: space-around;
+  align-content: center;
+  align-items: center;
+  text-align: center;
+  width: 320px;
+  height: 160px;
+  transition: .5s;
+  background-color: pink;
+}
+.blockMoveAnimBackground1 {
+  width: 320px;
+  height: 160px;
+  background-color: rgb(185, 58, 100);
+}
+.blockMoveAnimBackground2 {
+  transition: .4s;
+  width: 320px;
+  height: 160px;
+  background-color: rgb(226, 94, 138);
+}
+.blockMoveAnimBackground1:hover .blockMoveAnimBackground2 {
+  transform: rotate(6deg) translateY(-6px);
+  transform-origin: center;
+  transition: .4s;
+}
+.blockMoveAnimBackground1:hover .blockMoveAnim {
+  transform: rotate(7.5deg) translateY(-10px);
+  transform-origin: center;
+  transition: .4s;
+}
+.blockMoveAnim a {
+  display: flex;
+  justify-content: space-around;
+  align-content: center;
+  align-items: center;
+  text-align: center;
+  text-decoration: none;
+  width: 100%;
+  height: 100%;
+}
+.blockMoveAnim a h1 {
+  text-decoration: none;
+}
+.newBtn {
+  width: 200px;
+  height: 100px;
+  border-radius: 3%;
+  background-color: rgb(66, 66, 66);
+  transition: .35s;
+}
+.newBtn:hover {
+  background-color: var(--onHoverColor);
+  transition: .35s;
+  box-shadow: 3px;
+}
+@media (max-width: 2650px) {
+  .logo {
+    top: 6%;
+    left: 4%;
+    width: 800px;
+    background-image: url(media/logo/Logo_big.png);
+  }
+  .mainContent {
+    flex-direction: row;
+  }
+  .arrow {
+    top: -8%;
+    width: 100px;
+    height: 100px; 
+  }
+  .arrow span {
+    position: absolute;
+    width: 65px;
+    height: 8px;
+    background-color: black;
+  }
+  .arrow span::before,
+  .arrow span::after {
+    content: '';
+    position: absolute;
+    width: 50px;
+    height: 8px;
+    right: 23px;
+    background-color: black;
+  }
+  .arrow span::before {
+    top: 15px;
+    transform: rotate(45deg);
+  }
+  .arrow span::after {
+    top: -15px;
+    transform: rotate(-45deg);
+  }
+}
+@media (max-width: 1920px) {
+  .logo {
+    top: 6%;
+    left: 5%;
+    background-image: url(media/logo/Logo_medium.png);
+  }
+  .customShapeDividerBottom svg {
+    bottom: -8px;
+  }
+  .arrow {
+    top: -11%;
+    width: 75px;
+    height: 75px;
+  }
+  .arrow span {
+    position: absolute;
+    width: 40px;
+    height: 6px;
+    background-color: black;
+  }
+  .arrow span::before,
+  .arrow span::after {
+    content: '';
+    position: absolute;
+    width: 30px;
+    height: 6px;
+    right: 14px;
+    background-color: black;
+  }
+  .arrow span::before {
+    top: 9px;
+    transform: rotate(45deg);
+  }
+  .arrow span::after {
+    top: -9px;
+    transform: rotate(-45deg);
+  }
+}
+@media (max-width: 1440px) {
+  .logo {
+    top: 5%;
+    left: 5%;
+    background-image: url(media/logo/Logo_medium.png);
+  }
+  .customShapeDividerBottom svg {
+    bottom: 0px;
+  }
+  .arrow {
+    top: -10%;
+  }
+}
+@media (max-width: 1300px) {
+  .arrow {
+    top: -11%;
+  }
+}
+@media (max-width: 1024px) {
+  .logo {
+    top: 5%;
+    left: 6%;
+    background-image: url(media/logo/Logo_small.png);
+  }
+  .customShapeDividerBottom svg {
+    bottom: -25px;
+  }
+  .arrow {
+    top: -16%;
+    width: 70px;
+    height: 70px;
+  }
+}
+@media (max-width: 900px) {
+  .mainContent {
+    flex-direction: column;
+  }
+  .customShapeDividerBottom svg {
+    bottom: -20px;
+  }
+  .arrow {
+    width: 65px;
+    height: 65px;
+  }
+}
+@media (max-width: 600px) {
+  .logo {
+    top: 5%;
+    left: 8%;
+  }
+  .mainContent {
+    flex-direction: column;
+  }
+  .customShapeDividerBottom svg {
+    bottom: -15px;
+  }
+  .arrow {
+    top: -14%;
+  }
+}
